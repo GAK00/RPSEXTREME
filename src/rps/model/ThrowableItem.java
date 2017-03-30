@@ -7,8 +7,9 @@ public class ThrowableItem
 {
 	private String[] wins;
 	private String name;
+	private String victoryTag;
 
-	public ThrowableItem(String[] wins, String name)
+	public ThrowableItem(String[] wins, String name, String victoryTag)
 	{
 		name = name.trim();
 		name = name.toLowerCase();
@@ -21,10 +22,15 @@ public class ThrowableItem
 			win = win.substring(0, 1).toUpperCase() + win.substring(1);
 			wins[index] = win;
 		}
+		this.victoryTag = victoryTag;
 		this.name = name;
 		this.wins = wins;
 	}
 
+	public String getVictoryTag()
+	{
+		return victoryTag;
+	}
 	public boolean doesWin(ThrowableItem opponent)
 	{
 		for (String name : this.wins)

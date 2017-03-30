@@ -8,7 +8,7 @@ public class Game
 	private int losses;
 	private int games;
 	private CpuPlayer cpu;
-	
+
 	public Game()
 	{
 		wins = 0;
@@ -16,41 +16,38 @@ public class Game
 		games = 0;
 		cpu = new CpuPlayer();
 	}
-	
+
 	public String play(ThrowableItem playerItem)
 	{
 		ThrowableItem cpuItem = cpu.getThrow();
-		String prefix = "The player's " + playerItem.getName();
+		String prefix = "the player's " + playerItem.getName();
 		String suffix = "the cpu's " + cpuItem.getName();
 		String results = "";
-		if(playerItem.doesWin(cpuItem))
+		if (playerItem.doesWin(cpuItem))
 		{
-			results = prefix + " beats " + suffix;
+			results = prefix + " " + playerItem.getVictoryTag() + " " + suffix;
 			wins++;
-		}
-		else if(playerItem.doesLose(cpuItem))
+		} else if (playerItem.doesLose(cpuItem))
 		{
-			results = prefix + " is destroyed by " + suffix;
+			results = suffix + " " + cpuItem.getVictoryTag() + " " + prefix;
 			losses++;
-		}
-		else
+		} else
 		{
-			results = prefix +" ties " + suffix;
+			results = prefix + " ties " + suffix;
 		}
-		games ++;
+		games++;
 		return results;
-		
+
 	}
-	
+
 	public String getScore()
 	{
-		if(wins == 0)
+		if (wins == 0)
 		{
 			return "none";
-		}
-		else
+		} else
 		{
-		return DecimalFormat.getPercentInstance().format((double)wins/(wins+losses));
+			return DecimalFormat.getPercentInstance().format((double) wins / (wins + losses));
 		}
 	}
 

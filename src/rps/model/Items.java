@@ -17,11 +17,11 @@ public class Items
 		}
 	}
 
-	public static void AddItem(String name, String[] wins)
+	public static void AddItem(String name,String victoryTag, String[] wins)
 	{
 		if (!names.contains(name))
 		{
-			items.add(new ThrowableItem(wins, name));
+			items.add(new ThrowableItem(wins, name, victoryTag));
 			names.add(name);
 		}
 	}

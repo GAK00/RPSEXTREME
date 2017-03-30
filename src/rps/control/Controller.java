@@ -18,17 +18,16 @@ public class Controller
 		keepGoing = true;
 		hasPlayed = false;
 		scan = new Scanner(System.in);
-		Items.AddItem("Rock", new String[]{"lizard","Scissors","Wizard","SpiderMan"});
-		Items.AddItem("Paper", new String[]{"Rock","Spock","Gun","BatMan"});
-		Items.AddItem("Scissors", new String[]{"Paper","Lizard","Wizard","SpiderMan"});
-		Items.AddItem("Spock", new String[]{"Rock","Scissors","SpiderMan","Wizard"});
-		Items.AddItem("Lizard", new String[]{"Paper","Spock","Batman","Gun"});
-		Items.AddItem("Wizard", new String[]{"Gun","Lizard","Batman","Paper"});
-		Items.AddItem("Batman", new String[]{"Spiderman","Spock","Rock","Scissors"});
-		Items.AddItem("Spiderman", new String[]{"Paper","Gun","Lizard","Wizard"});
-		Items.AddItem("Gun", new String[]{"Rock","Spock","Batman","Scissors"});
-		
-		
+		Items.AddItem("Rock", "Smashes", new String[] { "lizard", "Scissors", "Wizard", "SpiderMan" });
+		Items.AddItem("Paper", "Covers", new String[] { "Rock", "Spock", "Gun", "BatMan" });
+		Items.AddItem("Scissors", "Cuts", new String[] { "Paper", "Lizard", "Wizard", "SpiderMan" });
+		Items.AddItem("Spock","Vaporizes" , new String[] { "Rock", "Scissors", "SpiderMan", "Wizard" });
+		Items.AddItem("Lizard", "Poisons", new String[] { "Paper", "Spock", "Batman", "Gun" });
+		Items.AddItem("Wizard","Zaps", new String[] { "Gun", "Lizard", "Batman", "Paper" });
+		Items.AddItem("Batman", "Batmans", new String[] { "Spiderman", "Spock", "Rock", "Scissors" });
+		Items.AddItem("Spiderman", "WebSlings", new String[] { "Paper", "Gun", "Lizard", "Wizard" });
+		Items.AddItem("Gun", "Shoots", new String[] { "Rock", "Spock", "Batman", "Scissors" });
+
 		game = new Game();
 
 	}
@@ -44,15 +43,15 @@ public class Controller
 				try
 				{
 					String names = "";
-					for(int index = 0; index< Items.getAllItems().size();index++)
+					for (int index = 0; index < Items.getAllItems().size(); index++)
 					{
-						if(index!=0)
+						if (index != 0)
 						{
 							names += ", ";
 						}
 						names += Items.getAllNames().get(index);
 					}
-					System.out.println("Please enter only one of the following:\n"+names);
+					System.out.println("Please enter only one of the following:\n" + names);
 					System.out.println(game.play(Items.getItem(scan.nextLine())));
 					System.out.println("You have won " + game.getScore() + " of your games");
 					hasPlayed = true;
